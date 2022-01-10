@@ -104,7 +104,7 @@ class Playground extends React.Component {
 
 	}
 	updateAnnotations(filter){
-		fetch('http://localhost:3000/playground?filter='+filter, {
+		fetch('https://juuke.herokuapp.com/playground?filter='+filter, {
 			method: "GET",
 			headers:{
 				'Accept': 'application/json, text/plain',

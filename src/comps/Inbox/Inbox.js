@@ -49,7 +49,7 @@ class Inbox extends React.Component {
     	});
 	}
 	getMessages(){
-		fetch('http://localhost:3000/conversations?user="'+this.user.userid+'"', {
+		fetch('https://juuke.herokuapp.com/conversations?user="'+this.user.userid+'"', {
 			method: 'GET',
 			headers: {
                     'Accept': 'application/json, text/plain',

@@ -65,7 +65,7 @@ class Messages extends React.Component {
 	   		recipient: this.recipient,
 	   		request: [this.state.chat, this.sender, this.senderid, this.recipient, this.recipientid, timeSent, todaysDate]
 	   	}
-	   	fetch('http://localhost:3000/message',{
+	   	fetch('https://juuke.herokuapp.com/message',{
 			method:"POST",
                 headers: {
                     'Accept': 'application/json, text/plain',
@@ -87,7 +87,7 @@ class Messages extends React.Component {
 		var body = {
 			conversationid: this.conversationid
 		}
-		fetch('http://localhost:3000/messages',{
+		fetch('https://juuke.herokuapp.com/messages',{
 			method: 'POST',
 			headers: {
                     'Accept': 'application/json, text/plain',

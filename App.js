@@ -120,7 +120,7 @@ class App extends React.Component {
     this.setState({user:{userid:'LfC0qdoWYe',jukername:'TheJuker',account_type:"juker", fullname:'James Laskey'}})
     // try{
     //     if(this.state.password.length>8){
-    //         fetch('http://localhost:3000/authenticate',{
+    //         fetch('https://juuke.herokuapp.com/authenticate',{
     //             method:"POST",
     //             headers: {
     //                 'Accept': 'application/json, text/plain',
@@ -197,7 +197,7 @@ class App extends React.Component {
                 alert('Enter a Jukername')
             }
             body['account_type']= this.state.account_type
-            fetch('http://localhost:3000/newJuker', {
+            fetch('https://juuke.herokuapp.com/newJuker', {
                 method:"POST",
                 headers: {
                     'Accept': 'application/json, text/plain',

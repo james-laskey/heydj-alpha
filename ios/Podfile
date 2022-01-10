@@ -34,7 +34,6 @@ target 'juke' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'react-native-mapbox-gl', :path => '../node_modules/@react-native-mapbox-gl/maps'
 
   target 'jukeTests' do
     inherit! :search_paths
@@ -42,7 +41,6 @@ target 'juke' do
   end
 
   use_native_modules!
-  use_frameworks!
 end
 
 target 'juke-tvOS' do

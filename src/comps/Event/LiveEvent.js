@@ -1,6 +1,5 @@
 import React, {Component, useState, useEffect} from 'react';
 import Geolocation from '@react-native-community/geolocation';
-import LinearGradient from 'react-native-linear-gradient';
 import { AppRegistry, Dimensions, StyleSheet, FlatList, Text, Button, View, ScrollView, TouchableHighlight, Screen, Image } from 'react-native';
 class LiveEvent extends React.Component {
 	constructor(props){
@@ -179,7 +178,7 @@ class LiveEvent extends React.Component {
 		//console.log(this.state.eventData)
 		setInterval(function(caller){
 			var event = caller.state.eventData
-			fetch('http://localhost:3000/eventfeed?jukecode='+event.jukecode, {
+			fetch('https://juuke.herokuapp.com/eventfeed?jukecode='+event.jukecode, {
 				method: "GET",
 				headers:{
 					'Accept': 'application/json, text/plain',
@@ -232,13 +231,13 @@ class LiveEvent extends React.Component {
 		)
 		} else {
 			return (
-				<LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['#000', '#2e2e2e', '#000']} style={this.styles.eventContainer}>
+				<View style={this.styles.eventContainer}>
 				<Text style={this.styles.eventName}>{this.state.eventData.eventname}</Text>
 				<Text style={this.styles.dj}>{"DJ: "+this.state.eventData.dj}</Text>
 				<View style={this.styles.voteView}>
 					<View style={{width:this.findProgress(), backgroundColor:"#fff",height:10, flexDirection:'row', justifyContent:'flex-start',borderRadius:2}}></View>
 				</View>
-			</LinearGradient>
+			</View>
 				)
 		}
 		

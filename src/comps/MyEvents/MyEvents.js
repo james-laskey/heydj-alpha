@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import * as ReactNative from 'react-native';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
+import EditEvent from './EditEvent'
 function noEvents(){
 	const styles = ReactNative.StyleSheet.create({
 		text: {
@@ -46,7 +47,7 @@ function ListEvent(props){
         },
         
 	})
-	var start = String(new Date(props.event.startdate).getMonth()+ 1) +"/"+ String(new Date(props.event.startdate).getDate())
+	var start = String(new Date(props.event.startdate).getMonth()+ 1) +"/"+ String(new Date(props.event.startdate).getDate()+1)
 	return(
 		<ReactNative.View style={style.event}>
 			<ReactNative.View style={{flexDirection:'column', flex:3}}>
@@ -91,6 +92,7 @@ class MyEvents extends React.Component {
 	        }
 	    	});
 		 this.open = this.open.bind(this)
+		 this.getEvent = this.getEvent.bind(this)
 		 this.getEvents = this.getEvents.bind(this)
 		 this.Item = ListEvent.bind(this)
 		 this.openEventPage = this.openEventPage.bind(this)
@@ -102,10 +104,15 @@ class MyEvents extends React.Component {
 		this.props.navigation.dispatch(DrawerActions.openDrawer())
 	}
 	openEventPage(event){
-		console.log(event)
+				this.setState({events:this.getEvent(event)})
+	}
+	getEvent(event){
+		return (
+			<EditEvent event={event}/>)
+			
 	}
 	getEvents(){
-		fetch('http://localhost:3000/myevents?userid='+this.user.userid,{
+		fetch('https://juuke.herokuapp.com/myevents?userid='+this.user.userid,{
 			method: "GET",
 			headers: {
 				'Accept': 'application/json, text/plain',
@@ -139,7 +146,7 @@ class MyEvents extends React.Component {
 					<ReactNative.Image source={require('../../../assets/drawerbutton.png')} style={this.styles.drawerimg}/>
 				</ReactNative.TouchableHighlight>
 				<ReactNative.ScrollView style={this.styles.eventsContainer}  key={this.state.events}>
-					{this.state.events}
+					{updateEvents(events)}
 				</ReactNative.ScrollView>
 			</ReactNative.View>
 			)

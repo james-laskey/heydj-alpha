@@ -123,7 +123,7 @@ class Event extends React.Component {
 	}
 	verifyEventCode(){
 		var that = this
-		fetch("http://localhost:3000/verifyEventCode?jukecode="+this.state.jukecode+"&userid="+this.user.userid, {
+		fetch("https://juuke.herokuapp.com/verifyEventCode?jukecode="+this.state.jukecode+"&userid="+this.user.userid, {
 			method: "GET",
 			headers: {
             	'Accept': 'application/json, text/plain',
@@ -158,7 +158,7 @@ class Event extends React.Component {
 			alert("Wait 5 Minutes for a vote")
 			
 		} else {
-			var query = 'http://localhost:3000/vote?jukecode='+this.state.eventData.jukecode
+			var query = 'https://juuke.herokuapp.com/vote?jukecode='+this.state.eventData.jukecode
 			console.log(query)
 			fetch(query, {
 				method: "GET",
@@ -177,7 +177,7 @@ class Event extends React.Component {
 	}
 	updateEventCode(){
 
-		fetch("http://localhost:3000/updateUserEventCode?jukecode="+this.state.jukecode+"&userid="+this.user.userid,{
+		fetch("https://juuke.herokuapp.com/updateUserEventCode?jukecode="+this.state.jukecode+"&userid="+this.user.userid,{
 				method: "GET",
 				headers: {
             		'Accept': 'application/json, text/plain',
@@ -189,7 +189,7 @@ class Event extends React.Component {
 			})
 	}
 	resetVotes(){
-		fetch("http://localhost:3000/reset?jukecode="+this.state.jukecode, {
+		fetch("https://juuke.herokuapp.com/reset?jukecode="+this.state.jukecode, {
 			method: "GET",
 			headers: {
             		'Accept': 'application/json, text/plain',

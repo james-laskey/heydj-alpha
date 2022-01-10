@@ -88,7 +88,7 @@ class PlaygroundAnnotation extends React.Component {
 			eventid: this.details.eventid,
       date: [todaysDate, timeSent]
 		}
-		fetch('http://localhost:3000/message',{
+		fetch('https://juuke.herokuapp.com/message',{
 			method:"POST",
                 headers: {
                     'Accept': 'application/json, text/plain',
@@ -139,7 +139,7 @@ class PlaygroundAnnotation extends React.Component {
 				<Text style={this.styles.date}> {this.startTime+" @"+this.details.times[0]+" ~ "+this.details.times[1]}</Text>
 				<Text style={this.styles.text}>{this.details.description}</Text>
 				<View style={this.styles.request}>
-					<Button title="Request Invite" color="#fff" onPress={this.toggle}/>
+					<Button title="Contact Host" color="#fff" onPress={this.toggle}/>
 				</View>
 				</View>
   				)
@@ -149,10 +149,10 @@ class PlaygroundAnnotation extends React.Component {
   				<View style={{flexDirection:'row'}}>
   					<Button onPress={this.toggle} title='x' color="#296a5d"/>
   				</View>
-  				<Text style={this.styles.title}> Request Note </Text>
+  				<Text style={this.styles.title}> Message </Text>
 				<TextInput style={this.styles.input} multiline={true} numberOfLines={4} onChangeText={request => this.setState({request})}/>
 				<View style={this.styles.request}>
-					<Button title='Send Request' color="#fff" onPress={this.requestInvite}/>
+					<Button title='Contact' color="#fff" onPress={this.requestInvite}/>
 				</View>
 				</View>
   				)
